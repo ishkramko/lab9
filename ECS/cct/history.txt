@@ -1,0 +1,15 @@
+  384  cd ~/Desktop
+  385  ls
+  386  ACS
+  387  cd ACS
+  388  aws ecs create-cluster --cluster-name fargate-cluster
+  389  aws ecs register-task-definition --cli-input-json file://$HOME/tasks/fargate-task.json
+  390  aws ecs register-task-definition --cli-input-json file://$HOME/Desktop/ACS/fargate-task.json
+  391  aws ecs register-task-definition --cli-input-json file://$HOME/Desktop/ACS/task.json
+  392  aws ecs create-service --cluster fargate-cluster --service-name fargate-service --task-definition sample-fargate:1 --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-e17802ad],securityGroups=[sg-d7d454a6],assignPublicIp=ENABLED}" 
+  393  aws ecs register-task-definition --cli-input-json file://$HOME/Desktop/ACS/task.json
+  394  aws ecs create-service --cluster fargate-cluster --service-name fargate-service --task-definition sample-fargate:2 --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-e17802ad],securityGroups=[sg-d7d454a6],assignPublicIp=ENABLED}" 
+  395  aws ecs create-service --cluster fargate-cluster --service-name fargate-service --task-definition sample-fargate:2 --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-e17802ad],securityGroups=[sg-d7d454a6],assignPublicIp=ENABLED}" 
+  396  aws ecs create-service --cluster fargate-cluster --service-name fargate-service --task-definition sample-fargate:1 --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-e17802ad],securityGroups=[sg-d7d454a6],assignPublicIp=ENABLED}" 
+  397  aws ecs create-service --cluster fargate-cluster --service-name fargate-service --task-definition sample-fargate:2 --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-e17802ad],securityGroups=[sg-d7d454a6],assignPublicIp=ENABLED}" 
+  398  history | tail -15 > history.txt
